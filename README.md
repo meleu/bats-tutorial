@@ -249,15 +249,15 @@ teardown() {
 
 Now you can run your test multiple times.
 
-You could do the `rm` in the test code itself, but if would get skipped on
+You could do the `rm` in the test code itself, but it would get skipped on
 failures.
 
 **Important notes about the `teardown` function:**
 
 - it runs after **every single** test in a file, regardless of test success.
-- as a test ends at its first failure, using `teardown` make sure it's a code to be always executed
-- each `.bats` file can only one `teardown` function
-- if you need a different `teardown`, create it with the tests that will need it in a separate file
+- as a test ends at its first failure, using `teardown` make sure it's a code to be always executed.
+- each `.bats` file can only have one `teardown` function.
+- if you need a different `teardown`, create it with the tests that will need it in a separate file.
 
 
 ## Test what you can, `skip` what you can't test
