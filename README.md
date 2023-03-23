@@ -55,13 +55,7 @@ Let's add the path to the `test/test.bats`:
 In the `test/test.bats`
 ```bash
 setup() {
-  local dir
-  # get the containing directory of this file
-  dir="$( 
-    cd "$( dirname "${BATS_TEST_FILENAME}" )" >/dev/null 2>&1 \
-    && pwd
-  )"
-  PATH="${dir}/../src:${PATH}"
+  PATH="${BATS_TEST_DIRNAME}/../src:${PATH}"
 }
 
 
@@ -107,12 +101,9 @@ setup() {
   load 'test_helper/bats-support/load'
   load 'test_helper/bats-assert/load'
 
-  # get the containing directory of this file
-  dir="$( 
-    cd "$( dirname "${BATS_TEST_FILENAME}" )" >/dev/null 2>&1 \
-    && pwd
-  )"
-  PATH="${dir}/../src:${PATH}"
+  # https://bats-core.readthedocs.io/en/stable/writing-tests.html#special-variables
+  # BATS_TEST_DIRNAME = dir in which the test file is located
+  PATH="${BATS_TEST_DIRNAME}/../src:${PATH}"
 }
 
 
